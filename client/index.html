@@ -22,7 +22,6 @@
         const users = {};
         
         const draw = () => {
-          console.log('draw');
           clientUpdate();
           
           ctx.clearRect(0, 0, 500, 300);
@@ -73,7 +72,7 @@
             //if the user is going down but not off screen
             //move their destination down (so we can animate)
             //from our current y
-            if(moveDown && square.y < 300 - square.y) {
+            if(moveDown && square.y < 300 - square.height) {
               square.y += 2;
             }
             //if the user is going left but not off screen
@@ -85,7 +84,7 @@
             //if the user is moving right but not off screen
             //move their destination right (so we can animate)
             //from our current x
-            if(moveRight && square.x < 500 - square.x) {
+            if(moveRight && square.x < 500 - square.width) {
               square.x += 2;
             }
           }
@@ -122,8 +121,8 @@
         };
         
         const removeUser = (data) => {
-          if(squares[data]) {
-            delete squares[data];
+          if(users[data]) {
+            delete users[data];
           }
         };
         
